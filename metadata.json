@@ -1,0 +1,15 @@
+{
+  "Source": "Sourcegoeshere",
+  "Source URL" : "text link" ,
+  "Path": "where the CSV file has been saved on the server",
+  "Notes": "<text>" ,
+  "Pub Date": "<YYYY-MM-DD>",
+  "Data-Path" : "usethis.csv" ,
+  "Year": "2020",
+  "Variable text": "text" ,
+  "Template": "text",
+  "Headline Template": "text",
+  "Standard": "number",
+  "Subject": "STATE GALLONS",
+  "Title": "The PM 2.5 levels in {{c}}"
+}
