@@ -76,7 +76,7 @@ def localized_Text(fips):
 
 
 
-    generated_text = t.render( y = year, s = subject, c = county[i], cn = county_number[i], hl = highlow, sa = state_average, src = source, r = "rank", p = percentile)
+    generated_text = t.render( y = year, s = subject, c = county[i], cn = county_number[i], hl = highlow, sa = state_average, src = source, r = rank, p = percentile)
     generated_title = ti.render(c = county[i])
 
 #make file and write json obj
