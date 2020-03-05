@@ -1,15 +1,10 @@
 {
-  "Source": "Sourcegoeshere",
+  "Source": "text",
   "Source URL" : "text link" ,
-  "Path": "where the CSV file has been saved on the server",
-  "Notes": "<text>" ,
+  "Notes": "text" ,
   "Pub Date": "<YYYY-MM-DD>",
-  "Data-Path" : "usethis.csv" ,
-  "Year": "2020",
-  "Variable text": "text" ,
-  "Template": "text",
-  "Headline Template": "text",
-  "Standard": "number",
+  "Data-Path" : "where the CSV file has been saved on the server" ,
+  "Year": "text",
   "Subject": "text",
   "Title": "text"
 }
