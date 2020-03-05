@@ -24,7 +24,7 @@ fips_code = finaldata['FIPS'].tolist()
 county = finaldata['COUNTY'].tolist()
 county_number= finaldata[subject].tolist()
 state = finaldata['STATE'].tolist()
-#state average, state
+
 
 def localized_Text(fips):
 
@@ -38,14 +38,24 @@ def localized_Text(fips):
     state_total = 0
     num_counties = 0
     this_state= state[i]
-    for c in range(0, len(county)):
+
+    for c in range(0, len(fips_code)):
         if state[c] == this_state:
             state_total = state_total + county_number[c]
-            if county_number[c] != 0:
+            if county_number[c] > 0:
                 num_counties = num_counties + 1
-    state_average = county_number[i]/ num_counties
 
-    #rank.append(ss.rankdata(slst))
+            slst.append(county_number[c])
+            print("fips:")
+            print(county_number[c])
+            if c == i:
+                index = len(slst)-1
+
+    state_average = county_number[i]/ num_counties
+    ranks = []
+    #print(slst)
+    ranks.append(ss.rankdata(slst))
+    rank = ranks[index]
 
 
     t = Template("The {{y}} {{s}} in {{c}}, (which is the closest county in your area that collects such data), was {{cn}}, which is {{hl}} the state average of {{sa}}, according to {{src}}. Within the state, {{c}} has the {{r}} highest {{s}}, and it is on the {{p}} percentile in the country.")
@@ -63,8 +73,7 @@ def localized_Text(fips):
          highlow = "the same as"
     else:
          highlow = "lower than"
-    #highlow = "higher"
-    print(type(county_number[i]))
+
 
 
     generated_text = t.render( y = year, s = subject, c = county[i], cn = county_number[i], hl = highlow, sa = state_average, src = source, r = "rank", p = percentile)
@@ -82,13 +91,13 @@ def localized_Text(fips):
     f.write(textjson)
 
 
-# create file for every fips code
-#  for num in fips_code:
-#      if math.isnan(num):
-#          pass
-#      else:
-#          c = int(num)
-#          localized_Text(c)
-#          print("done")
+ create file for every fips code
+  for num in fips_code:
+      if math.isnan(num):
+          pass
+      else:
+          c = int(num)
+          localized_Text(c)
+          print("done")
 
-localized_Text(fips)
+#localized_Text(fips)
