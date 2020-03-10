@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your  Title</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+
+</head>
+<body>
+
+<h1>Your Heading</h1>
+
+<p1>Your Paragraph.<br /></p1>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var ip = 'check'
+  var access_key = '56027a224bf0a221932a8f9b5c56738b';
+
+  $.ajax({
+      
+      url: 'http://api.ipstack.com/' + ip + '?access_key=' + access_key,
+      dataType: 'jsonp',
+      success: function(geo){
+        console.log(geo.zip)
+        $.ajax({
+          url: 'z_to_f.json',
+          dataType: 'json',
+          success: function(d){
+            for(var i = 0; i < d.length; i++) {
+                         var obj = d[i];
+                         if(obj.ZIP == geo.zip){
+                           $.ajax({
+                             url: '/' + obj.STCOUNTYFP + '.json',
+                             //url: '/IL.json',
+                             dataType: 'json',
+                             success: function(t){
+                               alert(t.Text)
+                               console.log(obj.STCOUNTYFP)
+                             }
+                           });
+                         }
+                       }
+                     }
+  });
+
+}
+});
+
+});
+
+</script>
+
+
+</body>
+</html>
