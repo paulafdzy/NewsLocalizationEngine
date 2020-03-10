@@ -27,7 +27,7 @@ state = finaldata['STATE'].tolist()
 
 county_number = []
 for item in lst:
-    if item == "na":
+    if item == "Na" or item == "na":
         county_number.append(None)
     else:
         county_number.append(float(item))
@@ -53,7 +53,7 @@ def localized_Text(fips):
                     if c == i:
                         index = len(slst)-1
 
-    state_average = state_total/ num_counties
+    state_average = int(state_total/ num_counties)
     ranks = []
     #print(slst)
     ranks.append(ss.rankdata(slst))
@@ -72,7 +72,7 @@ def localized_Text(fips):
              highlow = "lower than"
 
 
-        t = Template("The {{y}} {{s}} in {{c}}, (which is the closest county in your area that collects such data), was {{cn}}, which is {{hl}} the state average of {{sa}}, according to {{src}}. Within the state, {{c}} has the {{r}} highest {{s}}, and it is on the {{p}} percentile in the country.")
+        t = Template("The {{y}} {{s}} in {{c}} (which is the closest county in your area that collects such data), was {{cn}}, which is {{hl}} the state average of {{sa}}, according to the {{src}}. Within the state, {{c}} has the {{r}} highest {{s}}, and it is on the {{p}} percentile in the country.")
         ti= Template(given_title)
 
         generated_text = t.render( y = year, s = subject, c = county[i], cn = county_number[i], hl = highlow, sa = state_average, src = source, r = rank, p = percentile)
